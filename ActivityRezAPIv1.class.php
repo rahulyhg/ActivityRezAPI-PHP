@@ -159,6 +159,35 @@ class ActivityRezAPI {
 	
 
 	/** 
+	 * GetDestinations
+	 *
+	 * Lookup locations/destinations assigned. 
+	 *
+	 * Example: 
+	 *   $args = array(
+	 *    'data[showInWB]' => 0000, // (int) Required, when making a call to this argument you must specify the WebBooker ID you want the catalog of.
+	 *   );
+	 *   $result = $actrez->GetDestinations($args);
+	 *
+	 * @param array $args Array of arguments to be passed
+	 * @return array Inventory object is returned.
+	 */
+	public function GetDestinations($args = NULL){
+		// Build the URL
+		$url = $this->BaseUrl;
+		// Append the lookup details
+		$params['nonce'] = $this->ActivityRezKey;
+		$params['service'] = "lookup";
+		$params['action'] = "destinations";
+		// Return the result;
+		$CurlResult = $this->GET($url,array_merge($args, $params));
+ 			$ResultString = json_decode($CurlResult, 1);
+
+		return $ResultString; 
+	}
+
+
+	/** 
 	 * GetDailyView
 	 *
 	 * Used by the pos to render the 5 day calendar view it calls this one day at a 
