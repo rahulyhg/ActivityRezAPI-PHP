@@ -15,7 +15,7 @@ require_once("ActivityRezAPIv1.class.php");
 $nonce_key = "ENTER YOUR NONCE HERE";
 $subdomain = "demo"; // Select your API instance
 
-// Load the Foursquare API library
+// Load the ActivityRez API library
 $actrez = new ActivityRezAPI($nonce_key, $subdomain);
 
 
